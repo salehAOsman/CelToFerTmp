@@ -1,0 +1,38 @@
+﻿@model CelToFerTmp.Models.CheckTemp
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>Index</h2>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <h3>@ViewBag.err</h3><!--if text name is empty -->
+        <div class="form-group">
+            <!--input type="text" name="name" value="" />--><!--text Box for input name -->
+        </div>
+        <div class="form-group">
+            <!--<a>Temprature of patient</a>   <input type="number" name="temp" value="" />--><!--text Box for input temprature -->
+            <a>Name of patient</a>@Html.TextBox("name", "", new { @placeholder = "Enter name", @class = "form-control" })<br />
+            <a>Temprature of patient</a>@Html.TextBox("temp", "", new { @placeholder = "Enter number", @class = "form-control" })<br />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Send" /><br /><!--submit button-->
+            <input type="radio" name="scale" value="celsius" checked><a>Celsius </a><br /><!--radio celsius-->
+            <input type="radio" name="scale" value="fahrenheit"><a>Fahrenheit</a><br /><!--Radio fahrenheit-->
+            <input type="checkbox" name="hypo" value="hypothermia"><a>Hypothermia </a><br /><!--check box for Hypothermia situation-->
+
+            <h4>Hello: <span style="color:blue">@CelToFerTmp.Models.CheckTemp.Name</span></h4><!--property name-->
+            <h4>Fever : <span style="color:green">@CelToFerTmp.Models.CheckTemp.DescriptionFever</span></h4><!--property description of Fever-->
+            <h4>convert to Fahrenheit : <span style="color:red">@ViewBag.Fah</span></h4><!-- viewbag converting to Fahrenheit-->
+            <h4>Hypothermia : <span style="color:fuchsia">@ViewBag.hypo</span></h4><!--viewbag message to descripts Hypothermia-->
+        </div>
+    }
+</body>
+</html>
